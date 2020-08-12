@@ -188,3 +188,15 @@ variable "jx2" {
   type        = bool
   default     = true
 }
+
+variable "vault" {
+  description = "Enables in cluster Vault"
+  type        = bool
+  default     = true
+}
+
+variable "gsm" {
+  description = "Enables Google Secrets Manager, not available with JX2"
+  type        = bool
+  default     = false
+}

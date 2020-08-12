@@ -112,6 +112,7 @@ The following two paragraphs provide the full list of configuration and output v
 | force\_destroy | Flag to determine whether storage buckets get forcefully destroyed | `bool` | `false` | no |
 | gcp\_project | The name of the GCP project to use | `string` | n/a | yes |
 | git\_owner\_requirement\_repos | The git id of the owner for the requirement repositories | `string` | `""` | no |
+| gsm | Enables Google Secrets Manager, not available with JX2 | `bool` | `false` | no |
 | jenkins\_x\_namespace | Kubernetes namespace to install Jenkins X in | `string` | `"jx"` | no |
 | jx2 | Is a Jenkins X 2 install | `bool` | `true` | no |
 | lets\_encrypt\_production | Flag to determine wether or not to use the Let's Encrypt production server. | `bool` | `true` | no |
@@ -124,6 +125,7 @@ The following two paragraphs provide the full list of configuration and output v
 | release\_channel | The GKE release channel to subscribe to.  See https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels | `string` | `"UNSPECIFIED"` | no |
 | resource\_labels | Set of labels to be applied to the cluster | `map` | `{}` | no |
 | tls\_email | Email used by Let's Encrypt. Required for TLS when parent\_domain is specified | `string` | `""` | no |
+| vault | Enables in cluster Vault | `bool` | `true` | no |
 | vault\_url | URL to an external Vault instance in case Jenkins X shall not create its own system Vault | `string` | `""` | no |
 | velero\_namespace | Kubernetes namespace for Velero | `string` | `"velero"` | no |
 | velero\_schedule | The Velero backup schedule in cron notation to be set in the Velero Schedule CRD (see [default-backup.yaml](https://github.com/jenkins-x/jenkins-x-boot-config/blob/master/systems/velero-backups/templates/default-backup.yaml)) | `string` | `"0 * * * *"` | no |
@@ -132,7 +134,6 @@ The following two paragraphs provide the full list of configuration and output v
 | version\_stream\_url | The URL for the version stream to use when booting Jenkins X. See https://jenkins-x.io/docs/concepts/version-stream/ | `string` | `"https://github.com/jenkins-x/jenkins-x-versions.git"` | no |
 | webhook | Jenkins X webhook handler for git provider | `string` | `"lighthouse"` | no |
 | zone | Zone in which to create the cluster (deprecated, use cluster\_location instead) | `string` | `""` | no |
-
 #### Outputs
 
 | Name | Description |
@@ -147,6 +148,7 @@ The following two paragraphs provide the full list of configuration and output v
 | report\_storage\_url | The URL to the bucket for report storage |
 | repository\_storage\_url | The URL to the bucket for artifact storage |
 | vault\_bucket\_url | The URL to the bucket for secret storage |
+
 ### Running `jx boot`
 
 A terraform output (_jx\_requirements_) is available after applying this Terraform module.
