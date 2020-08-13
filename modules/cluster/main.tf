@@ -28,6 +28,15 @@ resource "google_container_cluster" "jx_cluster" {
     identity_namespace = "${var.gcp_project}.svc.id.goog"
   }
 
+  network = var.network
+  subnetwork = var.subnetwork
+  networking_mode = "VPC_NATIVE"
+
+  ip_allocation_policy {
+    cluster_secondary_range_name = "${var.subnetwork}-pods"
+    services_secondary_range_name = "${var.subnetwork}-services"
+  }
+
   resource_labels = var.resource_labels
 
   cluster_autoscaling {
@@ -44,6 +53,24 @@ resource "google_container_cluster" "jx_cluster" {
       minimum       = ceil(var.min_node_count * var.machine_types_memory[var.node_machine_type])
       maximum       = ceil(var.max_node_count * var.machine_types_memory[var.node_machine_type])
     }
+  }
+
+  addons_config {
+    http_load_balancing {
+      disabled = true
+    }
+
+    horizontal_pod_autoscaling {
+      disabled = true
+    }
+
+    network_policy_config {
+      disabled = false
+    }
+  }
+
+  network_policy {
+    enabled = true
   }
 
   node_config {

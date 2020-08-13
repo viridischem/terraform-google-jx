@@ -26,6 +26,14 @@ variable "cluster_id" {
   type        = string
 }
 
+variable "network" {
+  description = "The name of the network to use"
+}
+
+variable "subnetwork" {
+  description = "The name of the subnetwork to use"
+}
+
 // ----------------------------------------------------------------------------
 // Optional Variables
 // ----------------------------------------------------------------------------

@@ -144,6 +144,14 @@ variable "resource_labels" {
   default     = {}
 }
 
+variable "network" {
+  description = "The name of the network to use"
+}
+
+variable "subnetwork" {
+  description = "The name of the subnetwork to use"
+}
+
 // ----------------------------------------------------------------------------
 // jx-requirements.yml specific variables only used for template rendering
 // ----------------------------------------------------------------------------
