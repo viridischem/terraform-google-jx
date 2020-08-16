@@ -147,13 +147,15 @@ module "cluster" {
   jenkins_x_namespace = var.jenkins_x_namespace
   force_destroy       = var.force_destroy
 
-  node_machine_type = var.node_machine_type
-  node_disk_size    = var.node_disk_size
-  node_disk_type    = var.node_disk_type
-  min_node_count    = var.min_node_count
-  max_node_count    = var.max_node_count
-  release_channel   = var.release_channel
-  resource_labels   = var.resource_labels
+  node_machine_type    = var.node_machine_type
+  machine_types_cpu    = var.machine_types_cpu
+  machine_types_memory = var.machine_types_memory
+  node_disk_size       = var.node_disk_size
+  node_disk_type       = var.node_disk_type
+  min_node_count       = var.min_node_count
+  max_node_count       = var.max_node_count
+  release_channel      = var.release_channel
+  resource_labels      = var.resource_labels
 
   create_ui_sa = var.create_ui_sa
 }
